@@ -8,12 +8,8 @@
     "build": "vite build",
     "dev": "vite --open",
     "preview": "vite preview",
-    "preview:test": "start-server-and-test preview http://localhost:4173",
     "test": "vitest",
-    "test:ci": "vitest run",
-    "test:e2e": "pnpm preview:test 'cypress open'",
-    "test:e2e:headless": "pnpm preview:test 'cypress run'",
-    "test:e2e:ci": "vite build && pnpm preview:test 'cypress run --record'"
+    "test:ci": "vitest run"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.45.1",
