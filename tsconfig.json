@@ -16,5 +16,6 @@
     "types": ["vite/client", "vitest/globals", "vite-plugin-pwa/client"]
   },
   "include": ["src"],
+  "extends": "./tsconfig.paths.json",
   "references": [{ "path": "./tsconfig.node.json" }]
 }
