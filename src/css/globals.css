@@ -1,0 +1,302 @@
+/*@tailwind base;*/
+/*@tailwind components;*/
+/*@tailwind utilities;*/
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/** global font **/
+
+
+* {
+  box-sizing: border-box;
+  word-break: keep-all;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100vw;
+  font-family:
+    NotoSans,
+    -apple-system,
+    BlinkMacSystemFont,
+    Segoe UI,
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    Fira Sans,
+    Droid Sans,
+    Helvetica Neue,
+    sans-serif;
+  font-weight: normal;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: inherit;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+input,
+textarea {
+  outline: 0 !important;
+}
+
+textarea {
+  resize: vertical !important;
+}
+
+p {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/** headline **/
+h1,
+h2,
+h2.h2-m h3,
+h4,
+h5,
+h6 {
+  font-weight: 400;
+  margin: 0 !important;
+}
+
+h1 {
+  font-size: 96px;
+  line-height: 112px;
+}
+
+h2 {
+  font-size: 56px;
+  line-height: 72px;
+}
+
+h2.h2-m {
+  font-size: 56px;
+}
+
+h3 {
+  font-size: 48px;
+  line-height: 56px;
+}
+
+h4 {
+  font-size: 32px;
+  line-height: 46px;
+}
+
+h5 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 500 !important;
+}
+
+h6 {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+/** scrollbar **/
+::-webkit-scrollbar {
+  width: 14px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  border: 2px solid transparent;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+/** headers **/
+@layer components {
+  .list-headline {
+    @apply bg-NEP-white-100 pt-10 pb-8 px-8 shadow-[0_10px_20px_rgba(0,0,0,0.05)];
+  }
+
+  .breadcrumb {
+    @apply text-NEP-black-40 min-h-[24px];
+  }
+
+  .headline-title {
+    @apply flex items-center gap-x-2;
+  }
+
+  .headline-title h5 {
+    @apply text-NEP-black-100 font-medium;
+  }
+}
+
+/* Transition */
+.fade-enter {
+  position: relative;
+  transform: translateY(150px);
+  opacity: 0;
+  transition: 300s all ease;
+}
+.fade-enter-active {
+  transform: translate3d(0, 0, 0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+.fade-exit {
+  transform: translate3d(0, 0, 0);
+}
+.fade-exit-active {
+  transform: translate3d(-100%, 0, 0);
+  transition:
+    opacity 300ms,
+    transform 300ms;
+}
+
+.up-scale {
+  animation: 0.3s up-scales ease;
+}
+
+.down-scale {
+  animation: 0.3s down-scales ease;
+}
+
+@keyframes up-scales {
+  from {
+    transform: translateY(100vh);
+  }
+  to {
+    transform: translateY(0px);
+    transition: all 300ms ease 0s;
+  }
+}
+
+@keyframes down-scales {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(100vh);
+    transition: all 300ms ease 0s;
+  }
+}
+
+/*열릴때*/
+.navBar-open {
+  transition: width 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.navBar-open-margin {
+  transition: margin 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+.navBar-open-event {
+  animation: 0.5s linear 0s nav-openEvent;
+}
+
+/*닫힐때*/
+.navBar-close {
+  transition: width 0.3s linear;
+}
+
+.navBar-close-margin {
+  transition: margin 0.3s linear;
+}
+
+.navBar-close-event {
+  animation: 0.3s linear 0s nav-closeEvent;
+}
+
+/*depth 하위 열릴때*/
+.navBar-depth-open {
+  animation: flipDown ease 0.4s both;
+  animation-direction: normal;
+}
+
+/*depth 하위 닫힐때*/
+.navBar-depth-close {
+  animation: flipUp ease 0.4s both;
+  animation-direction: normal;
+}
+
+@keyframes flipDown {
+  0% {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    visibility: visible;
+  }
+  100% {
+    transform: rotateX(0);
+    transform-origin: top;
+  }
+}
+
+@keyframes flipUp {
+  0% {
+    transform: rotateX(0);
+    transform-origin: top;
+  }
+  100% {
+    transform: rotateX(-90deg);
+    transform-origin: top;
+    visibility: hidden;
+  }
+}
+
+@keyframes nav-openEvent {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes nav-closeEvent {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0;
+  }
+  75% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.draw-upper {
+  transform: translate(0, -140px);
+}
+
+.draw-upper.hdfs-timestamp-format {
+  transform: translate(0, -212px);
+}
