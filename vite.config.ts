@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react'
 import {defineConfig} from 'vite'
 import {VitePWA} from 'vite-plugin-pwa'
 import tsconfigPaths from 'vite-tsconfig-paths'
+import checker from 'vite-plugin-checker'
 
 export default defineConfig(({mode}) => ({
     test: {
@@ -28,6 +29,10 @@ export default defineConfig(({mode}) => ({
     plugins: [
         tsconfigPaths(),
         react(),
+        checker({
+            // e.g. use TypeScript check
+            typescript: true,
+        }),
         ...(mode === 'test'
             ? []
             : [
